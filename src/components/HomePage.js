@@ -36,7 +36,7 @@ const HomePage = () => {
         style={{ border: "2px solid grey" }}
       />
 
-      <button onClick={handleSubmit}>Start Game</button>
+      <button onClick={handleSubmit}>Start Chat</button>
     </div>
   );
 };
