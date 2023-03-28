@@ -18,6 +18,7 @@ function Chat() {
         .eq("room_name", location.state.room);
       setData(data);
     };
+
     fetchData();
   }, []);
 
@@ -57,8 +58,13 @@ function Chat() {
       },
     ]);
   };
+
+  const exitHandler = () => {
+    navigate("/", { state: { username: "", room: "" } });
+  };
   return (
     <>
+      <button onClick={exitHandler}>Exit</button>
       <div
         style={{
           display: "flex",
@@ -77,14 +83,14 @@ function Chat() {
           }}
         >
           <div>
-            {chatData?.length &&
+            {chatData &&
               chatData.map((obj, idx) => {
                 return (
                   <div className="speech-wrapper" style={{ overflow: "auto" }}>
                     <div className="chatbox triangle right-top alt">
                       <div className="txt">
                         <p className="name" style={{ fontWeight: "bold" }}>
-                          {obj.username}
+                          <h4>{obj.username}</h4>
                         </p>
                         {obj.message}
                         <br />
@@ -115,6 +121,9 @@ function Chat() {
 
       <h1 style={{ display: "grid", placeSelf: "auto" }}>
         Room Name:{location.state.room}
+      </h1>
+      <h1 style={{ display: "grid", placeSelf: "auto" }}>
+        User Name:{location.state.username}
       </h1>
     </>
   );
